@@ -1,0 +1,26 @@
+name: Initiate Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'release.json'
+  workflow_dispatch:
+    inputs: 
+      release-type:
+        description: "Release type [alpha, beta, ca, ga]"
+        required: true
+      version:
+        description: "Release Version"
+        required: true
+
+jobs:
+  tag-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{github.events.inputs.version}}
+          message: "Latest release"
