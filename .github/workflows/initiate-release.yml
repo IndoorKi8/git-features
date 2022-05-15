@@ -21,10 +21,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: Tag the deployment
-        uses: daily-co/create-tag-action@v1.0
+
+      - name: Create tag
+        uses: actions/github-script@v5
         with:
-          app-name: 'my-application'
-          environment: ${{github.event.inputs.release}}
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{github.event.inputs.version}}',
+              sha: context.sha
+            })
