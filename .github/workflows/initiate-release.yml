@@ -20,9 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Create tag
         uses: actions/github-script@v5
         with:
