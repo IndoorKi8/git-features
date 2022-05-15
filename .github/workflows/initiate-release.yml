@@ -8,7 +8,7 @@ on:
       - 'release.json'
   workflow_dispatch:
     inputs: 
-      release-type:
+      release:
         description: "Release type [alpha, beta, ca, ga]"
         required: true
       version:
@@ -19,8 +19,9 @@ jobs:
   tag-main:
     runs-on: ubuntu-latest
     steps:
-      - name: create-tag
-        uses: rickstaa/action-create-tag@v1
+      - name: Tag the deployment
+        uses: daily-co/create-tag-action@v1.0
         with:
-          tag: ${{github.event.inputs.version}}
-          message: "Latest release"
+          app-name: 'my-application'
+          environment: ${{github.event.inputs.release}}
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
