@@ -19,6 +19,10 @@ jobs:
   tag-main:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+       
       - name: Tag the deployment
         uses: daily-co/create-tag-action@v1.0
         with:
