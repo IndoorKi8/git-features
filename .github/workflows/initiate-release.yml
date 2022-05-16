@@ -20,10 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    permissions: write-all
 
+    steps:
       - name: Create tag
         uses: actions/github-script@v5
         with:
