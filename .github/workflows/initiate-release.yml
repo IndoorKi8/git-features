@@ -18,7 +18,10 @@ on:
 jobs:
   tag-main:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     permissions: write-all
+
     steps:
       - name: Create tag
         uses: actions/github-script@v5
