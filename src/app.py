@@ -8,6 +8,6 @@ app = Flask(__name__)
 def info():
   res = {}
   res['msg'] = 'App works succesfully'
-  res['gg'] = 'gggggggggggg'
+  res['gg'] = 'ggghfhfierbggggggggg'
   response = make_response(res)
   return response
