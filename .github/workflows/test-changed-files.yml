@@ -20,4 +20,4 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_modified}}'
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
-          python src/scripts/create.py ${{ steps.file_changes.outputs.files_modified}}
+          python ./src/scripts/create.py ${{ steps.file_changes.outputs.files_modified}}
